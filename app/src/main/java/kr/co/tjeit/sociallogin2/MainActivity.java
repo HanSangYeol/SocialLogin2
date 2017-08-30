@@ -19,6 +19,9 @@ public class MainActivity extends BaseActivity {
 //        3. ContextUtil 활용 실제로 로그아웃 (앱을 다시 키면 LoginActivity가 나타나게)
 //        4. 페이스북 로그아웃
 
+//        ※ 로그인 한 사용자의 이메일을 알아내자?
+//          -> TextView 1개 추가설치, 이메일을 표시.
+
     }
 
     @Override
