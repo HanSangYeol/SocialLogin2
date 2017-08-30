@@ -1,9 +1,11 @@
 package kr.co.tjeit.sociallogin2;
 
+import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,38 @@ public class SplashActivity extends AppCompatActivity {
 //    이동한 후에는 액티비티 종료
     void startProperActivity() {
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent;
+
+//                TODO - 로그인 처리가 완료되면, 조건문 수정 필요
+                if (true) {
+                    intent = new Intent(mContext, LoginActivity.class);
+                }
+                else {
+                    intent = new Intent(mContext, MainActivity.class);
+                }
+
+                startActivity(intent);
+                finish();
+            }
+        }, 2000);
+
     }
 
+    @Override
+    public void setupEvents() {
+
+    }
+
+    @Override
+    public void setValues() {
+
+    }
+
+    @Override
+    public void bindViews() {
+
+    }
 }
