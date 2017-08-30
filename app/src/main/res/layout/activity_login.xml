@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context="kr.co.tjeit.sociallogin2.LoginActivity">
 
     <!-- 페이스북 로그인 버튼 -->
@@ -16,5 +17,12 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp" />
 
+    <com.kakao.usermgmt.LoginButton
+        android:id="@+id/kakaoLoginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
 
 </LinearLayout>
