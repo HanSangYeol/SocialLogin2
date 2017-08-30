@@ -11,6 +11,8 @@ import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import kr.co.tjeit.sociallogin2.util.ContextUtil;
+
 public class LoginActivity extends BaseActivity {
 
     CallbackManager cm;
@@ -67,13 +69,17 @@ public class LoginActivity extends BaseActivity {
 
                 if (currentProfile != null) {
 //                    누군가 로그인 했다.
-                    currentProfile.getId();
-                    currentProfile.getName();
-                    currentProfile.getProfilePictureUri(500,500).toString();
 
-                }
-                else {
-//                    로그아웃 했다.
+                    ContextUtil.login(mContext,
+                            currentProfile.getId(),
+                            currentProfile.getName(),
+                            currentProfile.getProfilePictureUri(500,500).toString());
+
+                    Intent intent = new Intent(mContext, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+
+
                 }
 
             }
