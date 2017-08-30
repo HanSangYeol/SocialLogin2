@@ -1,13 +1,24 @@
 package kr.co.tjeit.sociallogin2;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.facebook.login.LoginManager;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 import kr.co.tjeit.sociallogin2.data.User;
+import kr.co.tjeit.sociallogin2.util.ContextUtil;
 
 public class MainActivity extends BaseActivity {
 
     User myUserInfo = null;
+    private de.hdodenhof.circleimageview.CircleImageView profileImg;
+    private android.widget.TextView nameTxt;
+    private android.widget.Button logoutBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +42,39 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void setupEvents() {
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                앱 자체 로그아웃
+                ContextUtil.logout(mContext);
 
+//                페이스북 로그아웃 처리
+                LoginManager.getInstance().logOut();
+
+                Intent intent = new Intent(mContext, LoginActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
     }
 
     @Override
     public void setValues() {
+        myUserInfo = ContextUtil.getLoginUserData(mContext);
+
+        nameTxt.setText(myUserInfo.getName());
+
+        Glide.with(mContext).load(myUserInfo.getProfileURL()).into(profileImg);
 
 
     }
 
     @Override
     public void bindViews() {
+        this.logoutBtn = (Button) findViewById(R.id.logoutBtn);
+        this.nameTxt = (TextView) findViewById(R.id.nameTxt);
+        this.profileImg = (CircleImageView) findViewById(R.id.profileImg);
 
     }
 }

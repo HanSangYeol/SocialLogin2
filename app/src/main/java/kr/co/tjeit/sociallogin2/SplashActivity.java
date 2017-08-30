@@ -13,6 +13,8 @@ import android.util.Log;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import kr.co.tjeit.sociallogin2.util.ContextUtil;
+
 public class SplashActivity extends BaseActivity {
 
     @Override
@@ -51,7 +53,7 @@ public class SplashActivity extends BaseActivity {
                 Intent intent;
 
 //                TODO - 로그인 처리가 완료되면, 조건문 수정 필요
-                if (true) {
+                if (ContextUtil.getLoginUserData(mContext) == null) {
                     intent = new Intent(mContext, LoginActivity.class);
                 }
                 else {
