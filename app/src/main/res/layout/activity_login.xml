@@ -9,4 +9,12 @@
 
     <!-- 페이스북 로그인 버튼 -->
 
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/fbLoginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp" />
+
+
 </LinearLayout>
